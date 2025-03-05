@@ -1,22 +1,13 @@
 {
-  "version": 3,
+  "version": 2,
   "builds": [
     {
       "src": "dist/**/*",
-      "use": "@vercel/static",
-      "config": { "zeroConfig": true }
+      "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/$1",
-      "check": true
-    },
-    {
-      "src": "/.*",
-      "status": 404,
-      "dest": "/dist/404.html"
-    }
+    { "src": "/(.*)", "dest": "/dist/$1" },
+    { "src": "/.*", "dest": "/dist/index.html" }
   ]
 }
