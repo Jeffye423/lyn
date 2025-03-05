@@ -1,13 +1,22 @@
 {
-    "builds": [
-      {
-        "src": "dist/**/*", // 指向你的 dist 目录
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      { "handle": "filesystem" },
-      { "src": "/.*", "dest": "/index.html" } // 单页应用需要此项
-    ]
-  }
-  
+  "version": 3,
+  "builds": [
+    {
+      "src": "dist/**/*",
+      "use": "@vercel/static",
+      "config": { "zeroConfig": true }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dist/$1",
+      "check": true
+    },
+    {
+      "src": "/.*",
+      "status": 404,
+      "dest": "/dist/404.html"
+    }
+  ]
+}
