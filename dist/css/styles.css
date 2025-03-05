@@ -10838,6 +10838,72 @@ body {
 .page-section {
   padding: 8rem 0;
 }
+/* 品牌logo滑动样式 */
+.logo-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.logo-track {
+  display: inline-flex;
+  animation: slide 60s linear infinite;
+  /* 新增以下两行 */
+  width: max-content;
+  position: relative; /* 确保正确的定位计算 */
+}
+
+.logo-item {
+  flex: 0 0 auto;
+  margin: 0 40px;
+  transition: transform 0.3s ease;
+}
+
+.logo-item img {
+  max-width: 120px;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.logo-item:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+}
+100% {
+    /* 移动总宽度的一半 */
+    transform: translateX(calc(-100% / 2)); 
+}
+}
+
+@keyframes slide {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%); /* 直接移动整个容器宽度 */
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .logo-item {
+      margin: 0 20px;
+  }
+  
+  .logo-item img {
+      max-width: 80px;
+  }
+
+  .logo-track {
+      animation-duration: 15s;
+  }
+}
 
 .text-white-75 {
   color: rgba(255, 255, 255, 0.75) !important;
@@ -10927,16 +10993,20 @@ hr.divider-light {
 }
 
 header.masthead {
-  padding-top: 10rem;
+  padding-top: 7rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.5) 0%, rgba(92, 77, 66, 0.5) 100%), url("../assets/img/2.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
 header.masthead h1, header.masthead .h1 {
-  font-size: 2.25rem;
+  font-size: 2.2rem !important; /* 使用 !important 提高优先级 */
+  line-height: 1.2 !important;
+  margin-left: 2px !important;
+  margin-right: 2px !important;
+
 }
 @media (min-width: 992px) {
   header.masthead {
